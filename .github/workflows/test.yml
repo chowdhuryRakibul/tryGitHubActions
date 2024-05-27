@@ -8,7 +8,5 @@ jobs:
     runs-on: label-1
     steps:
       - name: Print Hello World
-      - shell: cmd
         run: |
-          @echo on
-          echo "Hello World" >> myFile.txt
+          echo "Hello World" 
