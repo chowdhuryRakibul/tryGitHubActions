@@ -1,0 +1,12 @@
+name: test self hosted runner
+run-name: 🚀
+on:
+  push:
+    branches: [main]
+jobs:
+  task1:
+    name: Task 1
+    runs-on: label-1
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World"
