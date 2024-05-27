@@ -1,0 +1,17 @@
+name: test self hosted runner
+run-name: 🚀
+on:
+  push:
+    branches: [main]
+jobs:
+  task2:
+    runs-on: label-2
+    steps:
+      - name: download a build artifact
+        needs: task1
+        uses: actions/download-artifact@v4
+        with:
+          name: myartifacts
+          path: myFile.txt
+          if-no-files-found: error
+          retention-days: 1
