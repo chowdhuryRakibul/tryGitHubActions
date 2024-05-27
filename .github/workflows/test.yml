@@ -8,4 +8,7 @@ jobs:
     runs-on: label-1
     steps:
       - name: Print Hello World
-        run: echo Hello World
+      - shell: cmd
+        run: |
+          @echo on
+          echo Hello World
