@@ -15,7 +15,7 @@ jobs:
           pwd
           sh ./printHello.sh
       - name: upload a build artifact
-        uses: actions/upload-artifact@v2.2.0
+        uses: actions/upload-artifact@v4
         with:
           name: myartifacts
           path: myFile.txt
