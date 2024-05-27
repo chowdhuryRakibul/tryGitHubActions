@@ -14,3 +14,11 @@ jobs:
           ls -lah
           pwd
           sh ./printHello.sh
+    steps:
+        - name: upload a build artifact
+          uses: actions/upload-artifact@v2.2.0
+          with:
+            name: myartifacts
+            path: myFile.txt
+            if-no-files-found: error
+            retention-days: 1
