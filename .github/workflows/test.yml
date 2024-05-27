@@ -11,4 +11,4 @@ jobs:
       - shell: cmd
         run: |
           @echo on
-          echo Hello World
+          echo "Hello World" >> myFile.txt
