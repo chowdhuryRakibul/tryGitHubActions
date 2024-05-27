@@ -17,7 +17,17 @@ jobs:
       - name: upload a build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: myartifacts
-          path: myFile.txt
+          name: myArtifacts
+          path: myArtifactsFiles
           if-no-files-found: error
           retention-days: 1
+  task2:
+    runs-on: label-2
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4.1.1
+      - name: download a build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: myArtifacts
+          path: myArtifactsFiles
