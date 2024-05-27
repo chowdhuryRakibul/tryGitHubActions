@@ -8,5 +8,4 @@ jobs:
     runs-on: label-1
     steps:
       - name: Print Hello World
-        run: |
-          echo "Hello World" 
+        run: bash printHello.sh
