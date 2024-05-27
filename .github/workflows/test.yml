@@ -5,8 +5,7 @@ on:
     branches: [main]
 jobs:
   task1:
-    name: Task 1
     runs-on: label-1
     steps:
       - name: Print Hello World
-        run: echo "Hello World"
+        run: echo Hello World
