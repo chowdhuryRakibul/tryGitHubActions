@@ -5,7 +5,7 @@ on:
     branches: [main]
 jobs:
   task1:
-    runs-on: runner-1
+    runs-on: label-1
     steps:
       - name: Print Hello World
         run: |
