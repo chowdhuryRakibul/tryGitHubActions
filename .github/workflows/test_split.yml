@@ -7,8 +7,7 @@ on:
         required: true
         type: string
 jobs:
-  task2:
-    needs: task1
+  task2_1:
     runs-on: label-2
     steps:
       - name: checkout code
