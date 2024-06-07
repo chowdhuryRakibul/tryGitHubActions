@@ -6,6 +6,8 @@ on:
 jobs:
   task1:
     runs-on: label-1
+    outputs:
+      origChecksum: ${{steps.calculateChecksum.outputs.origChecksum}}
     steps:
       - name: checkout code
         uses: actions/checkout@v4.1.1
@@ -22,10 +24,13 @@ jobs:
           if-no-files-found: error
           retention-days: 1
       - name: calculate checksum
+        id: calculateChecksum
         run: |
-          origChecksum=$(sha256sum ./test_split.yml | awk '{print $1}')
+          origChecksum=$(sha256sum ./.github/workflows/test_split.yml | awk '{print $1}')
+          echo $origChecksum
+          echo "origChecksum=$origChecksum" >> $GITHUB_OUTPUT
   task2:
     needs: task1
     uses: ./.github/workflows/test_split.yml
     with:
-      originalChecksumOfBinary: $origChecksum
+      originalChecksumOfBinary: ${{needs.task1.outputs.origChecksum}}
