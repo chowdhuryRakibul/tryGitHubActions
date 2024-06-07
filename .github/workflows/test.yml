@@ -33,4 +33,4 @@ jobs:
     needs: task1
     uses: ./.github/workflows/test_split.yml
     with:
-      originalChecksumOfBinary: ${{needs.task1.outputs.origChecksum}}
+      originalChecksumOfBinary: ${{origChecksum}}
