@@ -19,3 +19,13 @@ jobs:
           path: myArtifactsFiles
       - name: debug
         run: echo ${{ inputs.originalChecksumOfBinary }}
+      - name: verify checksum
+        run: |
+          origChecksum=${{ inputs.originalChecksumOfBinary }}
+          newChecksum=$(sha256sum ./.github/workflows/test_split.yml | awk '{print $1}')
+          if [[ 16#origChecksum -eq 16#newChecksum ]]
+          then
+            echo "milse"
+          else
+            echo "mile nai"
+          fi
