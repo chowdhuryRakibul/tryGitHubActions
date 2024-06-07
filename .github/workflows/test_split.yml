@@ -1,0 +1,22 @@
+name: test self hosted runner -2
+run-name: 🚀 - 2
+on:
+  workflow_call:
+    inputs:
+      originalChecksumOfBinary:
+        required: true
+        type: string
+jobs:
+  task2:
+    needs: task1
+    runs-on: label-2
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4.1.1
+      - name: download a build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: myArtifacts
+          path: myArtifactsFiles
+      - name: debug
+        run: echo ${{ inputs.originalChecksumOfBinary }}
