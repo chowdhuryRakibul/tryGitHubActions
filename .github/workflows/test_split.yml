@@ -5,7 +5,7 @@ on:
     inputs:
       originalChecksumOfBinary:
         required: true
-        type: number
+        type: string
 jobs:
   task2_1:
     runs-on: label-2
@@ -22,8 +22,10 @@ jobs:
       - name: verify checksum
         run: |
           origChecksum=${{ inputs.originalChecksumOfBinary }}
-          newChecksum=$(sha256sum ./.github/workflows/test_split.yml | awk '{print $1}')
-          if [[ 16#origChecksum -eq 16#newChecksum ]]
+          newChecksum=$(echo $(sha256sum ./.github/workflows/test_split.yml | awk '{print $1}'))
+          echo $newChecksum
+          echo $origChecksum
+          if [[ origChecksum -eq newChecksum ]]
           then
             echo "milse"
           else
