@@ -23,7 +23,7 @@ jobs:
         run: |
           origChecksum=${{ inputs.originalChecksumOfBinary }}
           newChecksum=$(sha256sum ./.github/workflows/test_split.yml | awk '{print $1}')
-          if [[ 16#origChecksum -eq 16#newChecksum ]]
+          if [[ origChecksum -eq newChecksum ]]
           then
             echo "milse"
           else
